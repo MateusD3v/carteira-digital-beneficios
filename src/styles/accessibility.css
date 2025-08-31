@@ -116,12 +116,18 @@ body.clean-design,
   color: #000000;
 }
 
-body.clean-design *,
-.simplified-layout * {
+body.clean-design *:not(svg),
+.simplified-layout *:not(svg) {
   animation: none !important;
   transition: none !important;
   text-shadow: none !important;
   box-shadow: none !important;
+}
+
+/* Permitir transições para ícones SVG mesmo no design limpo */
+body.clean-design svg,
+.simplified-layout svg {
+  transition: all 0.3s ease !important;
 }
 
 body.clean-design .bg-muted,

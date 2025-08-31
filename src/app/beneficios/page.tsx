@@ -382,12 +382,12 @@ export default function BeneficiosPage() {
       <main className="flex-1 p-6 md:p-10">
         <div className="container mx-auto">
           <div className="mb-10">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
               <div>
-                <h1 className="text-4xl font-bold mb-2">Meus Benefícios</h1>
-                <p className="text-xl text-muted-foreground">Consulte seus benefícios ativos e status de pagamentos</p>
+                <h1 className="text-2xl sm:text-4xl font-bold mb-2">Meus Benefícios</h1>
+                <p className="text-lg sm:text-xl text-muted-foreground">Consulte seus benefícios ativos e status de pagamentos</p>
               </div>
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 sm:space-x-4 flex-wrap">
                 {/* Status de conexão */}
                 <div className="flex items-center space-x-2">
                   {isOnline ? (
@@ -409,11 +409,13 @@ export default function BeneficiosPage() {
                   disabled={isRefreshing}
                   variant="outline"
                   size="sm"
+                  className="text-xs sm:text-sm px-2 sm:px-3"
                 >
-                  <div className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`}>
-                    <RefreshCw className="h-4 w-4" />
+                  <div className={`h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 ${isRefreshing ? 'animate-spin' : ''}`}>
+                    <RefreshCw className="h-3 w-3 sm:h-4 sm:w-4" />
                   </div>
-                  {isRefreshing ? 'Atualizando...' : 'Atualizar'}
+                  <span className="hidden sm:inline">{isRefreshing ? 'Atualizando...' : 'Atualizar'}</span>
+                  <span className="sm:hidden">{isRefreshing ? '...' : ''}</span>
                 </Button>
 
                 {/* Botão de sincronizar (quando offline) */}
@@ -422,9 +424,10 @@ export default function BeneficiosPage() {
                     onClick={handleSyncWhenOnline}
                     variant="default"
                     size="sm"
+                    className="text-xs sm:text-sm px-2 sm:px-3"
                   >
-                    <Download className="h-4 w-4 mr-2" />
-                    Sincronizar
+                    <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                    <span className="hidden sm:inline">Sincronizar</span>
                   </Button>
                 )}
               </div>
@@ -474,17 +477,17 @@ export default function BeneficiosPage() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-10">
               {benefits.map((benefit) => (
                 <Card key={benefit.id} className="relative">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-lg">{benefit.name}</CardTitle>
-                      <div className="flex items-center space-x-1">
+                  <CardHeader className="pb-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                      <CardTitle className="text-base sm:text-lg truncate">{benefit.name}</CardTitle>
+                      <div className="flex items-center space-x-1 self-start sm:self-auto">
                         {getStatusIcon(benefit.status)}
-                        <Badge variant={getStatusVariant(benefit.status) as any}>
+                        <Badge variant={getStatusVariant(benefit.status) as any} className="text-xs">
                           {getStatusText(benefit.status)}
                         </Badge>
                       </div>
                     </div>
-                    <CardDescription>Código: {benefit.beneficiaryCode}</CardDescription>
+                    <CardDescription className="text-xs sm:text-sm">Código: {benefit.beneficiaryCode}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
@@ -505,23 +508,23 @@ export default function BeneficiosPage() {
                         </div>
                       </div>
                       
-                      <div className="flex space-x-2 pt-4">
+                      <div className="flex flex-col sm:flex-row gap-2 sm:space-x-2 sm:gap-0 pt-4">
                         <Button 
                           variant="outline" 
                           size="sm" 
-                          className="flex-1"
+                          className="flex-1 text-xs sm:text-sm px-2 sm:px-3"
                           onClick={() => handleViewExtratos(benefit)}
                         >
-                          <FileText className="h-4 w-4 mr-2" />
+                          <FileText className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                           Extratos
                         </Button>
                         <Button 
                           variant="outline" 
                           size="sm" 
-                          className="flex-1"
+                          className="flex-1 text-xs sm:text-sm px-2 sm:px-3"
                           onClick={() => handleDownloadComprovantes(benefit)}
                         >
-                          <CreditCard className="h-4 w-4 mr-2" />
+                          <CreditCard className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                           Comprovantes
                         </Button>
                       </div>
@@ -539,9 +542,14 @@ export default function BeneficiosPage() {
               <h3 className="text-lg font-semibold mb-2">Nenhum benefício encontrado</h3>
               <p className="text-muted-foreground mb-4">Não foi possível encontrar benefícios ativos para este CPF.</p>
               {!isOnline && (
-                <Button onClick={handleRefresh} variant="outline">
-                  <RefreshCw className="h-4 w-4 mr-2" />
-                  Tentar novamente
+                <Button 
+                  onClick={handleRefresh} 
+                  variant="outline"
+                  className="text-xs sm:text-sm px-2 sm:px-3"
+                >
+                  <RefreshCw className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                  <span className="hidden sm:inline">Tentar novamente</span>
+                  <span className="sm:hidden">Tentar</span>
                 </Button>
               )}
             </div>

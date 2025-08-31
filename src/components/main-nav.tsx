@@ -5,6 +5,9 @@ import { useState } from "react";
 import { Menu, X, Home, CreditCard, FileText, MapPin, Settings, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from '@/components/theme-toggle';
+import { NotificationCenter } from '@/components/notification-center';
+import { AccessibilityMenu } from '@/components/accessibility-menu';
 
 export function MainNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,17 +23,19 @@ export function MainNav() {
   return (
     <nav className="bg-background border-b">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <CreditCard className="h-5 w-5 text-primary-foreground" />
-            </div>
-            <span className="font-bold text-lg">Carteira Digital</span>
-          </Link>
+          <div className="flex items-center space-x-2 md:space-x-4 flex-shrink-0">
+            <Link href="/" className="flex items-center space-x-1 md:space-x-2">
+              <div className="w-6 h-6 md:w-8 md:h-8 bg-primary rounded-lg flex items-center justify-center">
+                <CreditCard className="h-4 w-4 md:h-5 md:w-5 text-primary-foreground" />
+              </div>
+              <span className="font-bold text-sm md:text-lg hidden xs:inline">Carteira</span>
+            </Link>
+          </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation - Centralizada */}
+          <div className="hidden md:flex items-center justify-center flex-1 space-x-8">
             {navigation.map((item) => {
               const Icon = item.icon;
               return (
@@ -46,15 +51,23 @@ export function MainNav() {
             })}
           </div>
 
-          {/* Mobile menu button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
+          {/* Botões de Ação - Desktop e Mobile */}
+          <div className="flex items-center space-x-1 flex-shrink-0">
+            <NotificationCenter />
+            <AccessibilityMenu />
+            <ThemeToggle />
+            
+            {/* Mobile - Botão do Menu */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden h-8 w-8 flex-shrink-0"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+            >
+              {isOpen ? <X className="h-5 w-5 text-black dark:text-foreground" /> : <Menu className="h-5 w-5 text-black dark:text-foreground" />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

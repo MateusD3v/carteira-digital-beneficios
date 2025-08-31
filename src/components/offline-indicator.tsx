@@ -29,8 +29,8 @@ export function OfflineIndicator() {
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
       
-      // Mostrar quando rolar mais de 200px ou estiver próximo do final da página
-      const shouldShow = scrollTop > 200 || (scrollTop + windowHeight >= documentHeight - 100);
+      // Mostrar apenas quando estiver totalmente no final da página
+      const shouldShow = scrollTop + windowHeight >= documentHeight - 10;
       setIsVisible(shouldShow);
     };
 

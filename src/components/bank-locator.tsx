@@ -466,29 +466,31 @@ export function BankLocator() {
     <div className="w-full max-w-6xl mx-auto my-8">
       <Card>
         <CardHeader>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center space-x-2">
-              <MapPin className="h-5 w-5 text-primary" />
-              <CardTitle>Localizador Avançado de Agências</CardTitle>
+              <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+              <CardTitle className="text-lg sm:text-xl truncate">Localizador Avançado de Agências</CardTitle>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-shrink-0">
               <Button
                 variant={viewMode === 'list' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setViewMode('list')}
-                className="flex items-center gap-1"
+                className="flex items-center gap-1 text-xs sm:text-sm px-2 sm:px-3"
               >
-                <List className="h-4 w-4" />
-                Lista
+                <List className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="hidden xs:inline">Lista</span>
+                <span className="xs:hidden">Local</span>
               </Button>
               <Button
                 variant={viewMode === 'map' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setViewMode('map')}
-                className="flex items-center gap-1"
+                className="flex items-center gap-1 text-xs sm:text-sm px-2 sm:px-3"
               >
-                <Map className="h-4 w-4" />
-                Mapa
+                <Map className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="hidden xs:inline">Mapa</span>
+                <span className="xs:hidden">Mapa</span>
               </Button>
             </div>
           </div>

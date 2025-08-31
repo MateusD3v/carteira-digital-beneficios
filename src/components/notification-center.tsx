@@ -144,7 +144,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
         className="relative"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Bell className="h-5 w-5" />
+        <Bell className="h-5 w-5 text-black dark:text-foreground" />
         {unreadCount > 0 && (
           <Badge 
             variant={urgentCount > 0 ? "destructive" : "default"} 
@@ -165,8 +165,8 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
           />
           
           {/* Painel */}
-          <Card className="absolute right-0 top-full mt-2 w-96 max-h-[80vh] z-50 shadow-lg">
-            <CardHeader className="pb-3">
+          <Card className="fixed sm:absolute right-4 sm:right-0 top-20 sm:top-full mt-2 w-[calc(100vw-2rem)] sm:w-96 max-w-[90vw] max-h-[70vh] z-50 shadow-lg">
+            <CardHeader className="pb-2 px-4 pt-4">
               <div className="flex items-center justify-between">
                 <div>
                   <CardTitle className="text-lg">Notificações</CardTitle>
@@ -186,7 +186,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
               </div>
               
               {/* Filtros */}
-              <div className="flex flex-wrap gap-2 mt-3">
+              <div className="flex flex-wrap gap-1 mt-2">
                 <Button
                   variant={filter === 'all' ? 'default' : 'outline'}
                   size="sm"
@@ -217,7 +217,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
               
               {/* Ações */}
               {notifications.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-3">
+                <div className="flex flex-wrap gap-1 mt-2">
                   {unreadCount > 0 && (
                     <Button
                       variant="outline"
@@ -243,7 +243,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
             </CardHeader>
             
             <CardContent className="p-0">
-              <div className="max-h-96 overflow-y-auto px-4 pb-4">
+              <div className="max-h-64 sm:max-h-96 overflow-y-auto px-3 pb-3">
                 {filteredNotifications.length === 0 ? (
                   <div className="text-center py-8">
                     <Bell className="h-12 w-12 text-muted-foreground mx-auto mb-4" />

@@ -243,11 +243,11 @@ export function AccessibilityMenu({ className }: AccessibilityMenuProps) {
         aria-label="Menu de acessibilidade"
         aria-expanded={isOpen}
       >
-        <Accessibility className="h-5 w-5" />
+        <Accessibility className="h-5 w-5 text-black dark:text-foreground" />
       </Button>
 
       {isOpen && (
-        <Card className="absolute right-0 mt-2 w-72 shadow-lg max-w-[90vw] max-h-[80vh] overflow-y-auto z-50">
+        <Card className="fixed sm:absolute right-4 sm:right-0 top-20 sm:top-full mt-2 w-[calc(100vw-2rem)] sm:w-72 shadow-lg max-w-[90vw] max-h-[70vh] overflow-y-auto z-50">
           <CardHeader className="pb-3">
             <CardTitle className="text-lg">Opções de Acessibilidade</CardTitle>
           </CardHeader>

@@ -381,57 +381,61 @@ export default function DocumentosPage() {
             ) : (
               filteredDocuments.map((document) => (
                 <Card key={document.id} className="hover:shadow-md transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
-                          <FileText className="h-6 w-6 text-blue-600" />
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                      <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
+                        <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-blue-100 flex-shrink-0">
+                          <FileText className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                         </div>
-                        <div>
-                          <h3 className="font-medium text-foreground">{document.name}</h3>
-                          <div className="flex items-center gap-4 mt-1 text-sm text-muted-foreground">
+                        <div className="min-w-0 flex-1">
+                          <h3 className="font-medium text-foreground truncate">{document.name}</h3>
+                          <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-1 text-xs sm:text-sm text-muted-foreground">
                             <span>{document.type}</span>
                             <span>{document.size}</span>
-                            <span>Enviado em {new Date(document.uploadDate).toLocaleDateString('pt-BR')}</span>
+                            <span className="hidden sm:inline">Enviado em {new Date(document.uploadDate).toLocaleDateString('pt-BR')}</span>
+                            <span className="sm:hidden">{new Date(document.uploadDate).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })}</span>
                           </div>
-                          <div className="flex items-center gap-2 mt-2">
-                            <Badge variant="outline">
+                          <div className="flex items-center gap-2 mt-2 flex-wrap">
+                            <Badge variant="outline" className="text-xs">
                               {categoryLabels[document.category]}
                             </Badge>
-                            <Badge className={statusColors[document.status]}>
+                            <Badge className={`${statusColors[document.status]} text-xs`}>
                               {statusLabels[document.status]}
                             </Badge>
                           </div>
                         </div>
                       </div>
                       
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1 sm:gap-2 flex-wrap sm:flex-nowrap">
                         <Button
                           variant="outline"
                           size="sm"
                           onClick={() => handleViewDocument(document)}
-                          className="flex items-center gap-1"
+                          className="flex items-center gap-1 text-xs sm:text-sm px-2 sm:px-3 flex-1 sm:flex-none"
                         >
-                          <Eye className="h-4 w-4" />
-                          Visualizar
+                          <Eye className="h-3 w-3 sm:h-4 sm:w-4" />
+                          <span className="hidden sm:inline">Visualizar</span>
+                          <span className="sm:hidden">Ver</span>
                         </Button>
                         <Button
                           variant="outline"
                           size="sm"
                           onClick={() => handleDownloadDocument(document)}
-                          className="flex items-center gap-1"
+                          className="flex items-center gap-1 text-xs sm:text-sm px-2 sm:px-3 flex-1 sm:flex-none"
                         >
-                          <Download className="h-4 w-4" />
-                          Baixar
+                          <Download className="h-3 w-3 sm:h-4 sm:w-4" />
+                          <span className="hidden sm:inline">Baixar</span>
+                          <span className="sm:hidden">DL</span>
                         </Button>
                         <Button
                           variant="outline"
                           size="sm"
                           onClick={() => handleDeleteDocument(document.id)}
-                          className="flex items-center gap-1 text-red-600 hover:text-red-700"
+                          className="flex items-center gap-1 text-red-600 hover:text-red-700 text-xs sm:text-sm px-2 sm:px-3 flex-1 sm:flex-none"
                         >
-                          <Trash2 className="h-4 w-4" />
-                          Excluir
+                          <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
+                          <span className="hidden sm:inline">Excluir</span>
+                          <span className="sm:hidden">Del</span>
                         </Button>
                       </div>
                     </div>

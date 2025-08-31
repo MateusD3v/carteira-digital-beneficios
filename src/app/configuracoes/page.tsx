@@ -97,23 +97,25 @@ export default function ConfiguracoesPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  <div className="flex-1">
                     <label className="text-sm font-medium">Tema escuro</label>
                     <p className="text-xs text-muted-foreground">Alternar entre tema claro e escuro</p>
                   </div>
-                  <Button variant="outline" size="sm">
-                    Use o botão de tema no canto superior direito
+                  <Button variant="outline" size="sm" className="text-xs sm:text-sm px-2 sm:px-3 whitespace-nowrap">
+                    <span className="hidden sm:inline">Use o botão de tema no canto superior direito</span>
+                    <span className="sm:hidden">Botão de tema</span>
                   </Button>
                 </div>
                 
-                <div className="flex items-center justify-between">
-                  <div>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  <div className="flex-1">
                     <label className="text-sm font-medium">Design limpo</label>
                     <p className="text-xs text-muted-foreground">Interface simplificada com menos elementos visuais</p>
                   </div>
-                  <Button variant="outline" size="sm">
-                    Disponível no menu de acessibilidade
+                  <Button variant="outline" size="sm" className="text-xs sm:text-sm px-2 sm:px-3 whitespace-nowrap">
+                    <span className="hidden sm:inline">Disponível no menu de acessibilidade</span>
+                    <span className="sm:hidden">Menu acessibilidade</span>
                   </Button>
                 </div>
               </CardContent>
@@ -132,38 +134,38 @@ export default function ConfiguracoesPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-950/20 rounded border border-green-200 dark:border-green-800">
-                    <div>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-3 bg-green-50 dark:bg-green-950/20 rounded border border-green-200 dark:border-green-800">
+                    <div className="flex-1">
                       <span className="text-sm font-medium text-green-800 dark:text-green-200">Dados locais</span>
                       <p className="text-xs text-green-600 dark:text-green-300">
                         Seus dados são armazenados apenas no seu dispositivo
                       </p>
                     </div>
-                    <Badge variant="outline" className="border-green-300 text-green-700 dark:text-green-300">
+                    <Badge variant="outline" className="border-green-300 text-green-700 dark:text-green-300 self-start sm:self-auto">
                       Seguro
                     </Badge>
                   </div>
                   
-                  <div className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-950/20 rounded border border-blue-200 dark:border-blue-800">
-                    <div>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-3 bg-blue-50 dark:bg-blue-950/20 rounded border border-blue-200 dark:border-blue-800">
+                    <div className="flex-1">
                       <span className="text-sm font-medium text-blue-800 dark:text-blue-200">Sem rastreamento</span>
                       <p className="text-xs text-blue-600 dark:text-blue-300">
                         Não coletamos dados pessoais ou de navegação
                       </p>
                     </div>
-                    <Badge variant="outline" className="border-blue-300 text-blue-700 dark:text-blue-300">
+                    <Badge variant="outline" className="border-blue-300 text-blue-700 dark:text-blue-300 self-start sm:self-auto">
                       Privado
                     </Badge>
                   </div>
                   
-                  <div className="flex items-center justify-between p-3 bg-purple-50 dark:bg-purple-950/20 rounded border border-purple-200 dark:border-purple-800">
-                    <div>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-3 bg-purple-50 dark:bg-purple-950/20 rounded border border-purple-200 dark:border-purple-800">
+                    <div className="flex-1">
                       <span className="text-sm font-medium text-purple-800 dark:text-purple-200">Código aberto</span>
                       <p className="text-xs text-purple-600 dark:text-purple-300">
                         Aplicação desenvolvida com transparência total
                       </p>
                     </div>
-                    <Badge variant="outline" className="border-purple-300 text-purple-700 dark:text-purple-300">
+                    <Badge variant="outline" className="border-purple-300 text-purple-700 dark:text-purple-300 self-start sm:self-auto">
                       Transparente
                     </Badge>
                   </div>
