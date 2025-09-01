@@ -448,13 +448,13 @@ export default function BeneficiosPage() {
               <Alert className="mb-6 border-orange-200 bg-orange-50">
                 <AlertTriangle className="h-4 w-4 text-orange-600" />
                 <AlertDescription className="text-orange-800">
-                  <div className="flex items-center justify-between">
-                    <span>Atenção: Seu Auxílio Brasil precisa ser recadastrado até 15/02/2024</span>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                    <span className="flex-1">Atenção: Seu Auxílio Brasil precisa ser recadastrado até 15/02/2024</span>
                     <Button
                       onClick={handleRecadastroAlert}
                       variant="outline"
                       size="sm"
-                      className="ml-4"
+                      className="flex-shrink-0 self-start sm:self-auto"
                     >
                       Entendi
                     </Button>
